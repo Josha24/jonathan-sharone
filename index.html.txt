@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jonathan & Sharone</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="loader">
+
+<h1>Jonathan & Sharone</h1>
+
+<p>16 July 2026</p>
+
+</div>
+
+<section class="hero">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h2>Jonathan</h2>
+
+<span>&</span>
+
+<h2>Sharone</h2>
+
+<p>16 July 2026</p>
+
+<button id="openInvitation">
+
+Open Invitation
+
+</button>
+
+</div>
+
+</section>
+
+<audio id="music" loop>
+
+<source src="music/wedding-song.m4a" type="audio/mp4">
+
+</audio>
+
+<section class="invitation">
+
+<img src="images/invitation.png" alt="Invitation">
+
+</section>
+
+<section class="details">
+
+<h2>Our Celebration</h2>
+
+<div class="card">
+
+<h3>Date</h3>
+
+<p>16 July 2026</p>
+
+</div>
+
+<div class="card">
+
+<h3>Venue</h3>
+
+<p>
+
+The Address Boutique Hotel<br>
+
+Port Chambly, Mauritius
+
+</p>
+
+</div>
+
+</section>
+
+<section class="countdown">
+
+<h2>Countdown</h2>
+
+<div id="timer">
+
+Loading...
+
+</div>
+
+</section>
+
+<section class="verse">
+
+<h2>Mark 10:9</h2>
+
+<p>
+
+"Therefore what God has joined together,
+
+let no one separate."
+
+</p>
+
+</section>
+
+<button id="musicBtn">
+
+🎵
+
+</button>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

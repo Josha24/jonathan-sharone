@@ -1,0 +1,440 @@
+/* ==========================
+   Jonathan & Sharone Wedding
+   Luxury Wedding Theme
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Cormorant Garamond', serif;
+    background:#f8f3ed;
+    color:#7a5d36;
+    overflow-x:hidden;
+}
+
+/* ==========================
+   Loader
+========================== */
+
+#loader{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#1f3328;
+    color:#e9d4a5;
+    animation:fadeOut 2s forwards;
+    animation-delay:2.5s;
+    position:fixed;
+    width:100%;
+    z-index:9999;
+}
+
+#loader h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    letter-spacing:3px;
+}
+
+#loader p{
+    font-size:22px;
+    margin-top:20px;
+}
+
+/* ==========================
+Hero Section
+========================== */
+
+.hero{
+    height:100vh;
+    background:linear-gradient(rgba(24,45,35,.70),rgba(24,45,35,.70)),
+    url("images/background.jpg") center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    z-index:2;
+}
+
+.hero h2{
+    font-family:'Great Vibes';
+    font-size:95px;
+    color:#fff;
+    font-weight:400;
+}
+
+.hero span{
+    display:block;
+    color:#d4b46c;
+    font-size:70px;
+    margin:20px 0;
+}
+
+.hero p{
+    color:white;
+    font-size:28px;
+    letter-spacing:3px;
+    margin-bottom:50px;
+}
+
+#openInvitation{
+    padding:18px 45px;
+    border:none;
+    background:#d4b46c;
+    color:#1d3528;
+    cursor:pointer;
+    font-size:20px;
+    border-radius:50px;
+    transition:.35s;
+    font-weight:bold;
+}
+
+#openInvitation:hover{
+    background:white;
+    transform:translateY(-4px);
+}
+
+/* ==========================
+Invitation
+========================== */
+
+.invitation{
+    padding:120px 30px;
+    display:flex;
+    justify-content:center;
+}
+
+.invitation img{
+    width:100%;
+    max-width:700px;
+    border-radius:20px;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+    transition:.5s;
+}
+
+.invitation img:hover{
+    transform:scale(1.02);
+}
+
+/* ==========================
+Details
+========================== */
+
+.details{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    padding-bottom:120px;
+}
+
+.details h2{
+    text-align:center;
+    font-size:55px;
+    margin-bottom:60px;
+    color:#98753f;
+    font-family:'Great Vibes';
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    padding:45px;
+    margin-bottom:35px;
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    font-size:34px;
+    margin-bottom:15px;
+    color:#b78d49;
+}
+
+.card p{
+    font-size:26px;
+    line-height:1.7;
+}
+
+/* ==========================
+Countdown
+========================== */
+
+.countdown{
+    background:#1f3328;
+    color:white;
+    padding:120px 20px;
+    text-align:center;
+}
+
+.countdown h2{
+    font-family:'Great Vibes';
+    font-size:60px;
+    color:#d9bc80;
+    margin-bottom:45px;
+}
+
+#timer{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    background:white;
+    color:#1f3328;
+    width:130px;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.time-box h3{
+    font-size:48px;
+}
+
+.time-box span{
+    font-size:20px;
+    color:#777;
+}
+
+/* ==========================
+Bible Verse
+========================== */
+
+.verse{
+    padding:130px 40px;
+    text-align:center;
+    background:#f8f3ed;
+}
+
+.verse h2{
+    font-size:52px;
+    color:#b58a47;
+    font-family:'Great Vibes';
+    margin-bottom:35px;
+}
+
+.verse p{
+    max-width:900px;
+    margin:auto;
+    font-size:33px;
+    line-height:1.6;
+}
+
+/* ==========================
+Music Button
+========================== */
+
+#musicBtn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:28px;
+    background:#d4b46c;
+    color:#1f3328;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:.35s;
+    z-index:999;
+}
+
+#musicBtn:hover{
+    transform:scale(1.15);
+}
+
+/* ==========================
+Animations
+========================== */
+
+@keyframes fadeOut{
+
+    to{
+
+        opacity:0;
+        visibility:hidden;
+
+    }
+
+}
+
+.fadeUp{
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    transition:1s;
+
+}
+
+.fadeUp.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ==========================
+Responsive
+========================== */
+
+@media(max-width:900px){
+
+.hero h2{
+
+font-size:65px;
+
+}
+
+.hero span{
+
+font-size:50px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+}
+
+.details h2{
+
+font-size:42px;
+
+}
+
+.card{
+
+padding:30px;
+
+}
+
+.card p{
+
+font-size:22px;
+
+}
+
+.verse p{
+
+font-size:24px;
+
+}
+
+#timer{
+
+gap:15px;
+
+}
+
+.time-box{
+
+width:100px;
+
+padding:18px;
+
+}
+
+.time-box h3{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero h2{
+
+font-size:48px;
+
+}
+
+.hero span{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+#openInvitation{
+
+padding:15px 30px;
+
+font-size:18px;
+
+}
+
+.invitation{
+
+padding:70px 15px;
+
+}
+
+.details{
+
+width:95%;
+
+}
+
+.card h3{
+
+font-size:28px;
+
+}
+
+.card p{
+
+font-size:20px;
+
+}
+
+.countdown h2{
+
+font-size:45px;
+
+}
+
+.verse h2{
+
+font-size:40px;
+
+}
+
+.verse p{
+
+font-size:20px;
+
+}
+
+}
