@@ -151,13 +151,33 @@ const audio = document.getElementById('bg-music');
 
 function startMusic() {
   if (!audio) return;
+
+  // Load the audio first, then play
+  audio.load();
   audio.volume = 0;
-  audio.play().then(() => {
-    musicPlaying = true;
-    fadeAudioIn();
-  }).catch(() => {
-    // Autoplay blocked — user can toggle manually
-  });
+
+  const tryPlay = () => {
+    const promise = audio.play();
+    if (promise !== undefined) {
+      promise.then(() => {
+        musicPlaying = true;
+        updateMusicIcon();
+        fadeAudioIn();
+      }).catch(() => {
+        // Still blocked — show the button so user can tap it manually
+        const player = document.getElementById('music-player');
+        if (player) player.classList.remove('hidden');
+      });
+    }
+  };
+
+  // Small delay to let the browser register the click interaction
+  setTimeout(tryPlay, 300);
+}
+
+function updateMusicIcon() {
+  document.getElementById('music-icon-on').style.display = 'block';
+  document.getElementById('music-icon-off').style.display = 'none';
 }
 
 function fadeAudioIn() {
