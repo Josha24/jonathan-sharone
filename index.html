@@ -1,115 +1,107 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jonathan & Sharone</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonathan & Sharone — 16 July 2026</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <div class="loader-content">
-    <div class="ring"></div>
-    <p>Jonathan & Sharone</p>
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <h1>Jonathan & Sharone</h1>
+    <p>16 July 2026</p>
   </div>
-</div>
 
-<!-- FLOATING PARTICLES -->
-<div class="particles"></div>
-
-<!-- MAIN CONTENT -->
-<div id="main">
-
-  <!-- HERO SECTION -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="overlay"></div>
-
     <div class="hero-content">
-      <h1>Jonathan & Sharone</h1>
-      <p class="date">Nous nous marions</p>
-      <p class="subdate">14 Juin 2026</p>
-
-      <button id="openInvite">Ouvrir l’invitation ✉️</button>
+      <p class="hero-eyebrow">You are invited to the wedding of</p>
+      <h2 class="hero-names">Jonathan <span class="ampersand">&</span> Sharone</h2>
+      <p class="hero-date">16 · July · 2026</p>
+      <button id="openInvitation">Open Invitation</button>
     </div>
   </section>
 
-  <!-- ENVELOPE SECTION -->
-  <section id="envelopeSection" class="hidden">
-    <div class="envelope-container">
-      <div class="envelope" id="envelope">
-        <div class="front"></div>
-        <div class="back"></div>
-      </div>
-      <p class="tap">Cliquez pour ouvrir</p>
-    </div>
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="music/wedding-song.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- Invitation image -->
+  <section class="invitation fade-in" id="invitation">
+    <img src="images/invitation.png" alt="Jonathan and Sharone wedding invitation card">
   </section>
 
-  <!-- INVITATION CONTENT -->
-  <section id="invitation" class="hidden">
+  <!-- Details -->
+  <section class="details">
+    <h2 class="section-title fade-in">Our Celebration</h2>
 
-    <!-- PHOTO -->
-    <div class="photo-section">
-      <img src="photo.jpg" alt="Couple Photo">
-    </div>
-
-    <!-- VERSE -->
-    <div class="verse">
-      <h2>Marc 10:9</h2>
-      <p>« Que l'homme donc ne sépare pas ce que Dieu a uni. »</p>
-    </div>
-
-    <!-- DETAILS -->
-    <div class="details">
-
-      <div class="card">
-        <h3>Cérémonie</h3>
-        <p>The Address Boutique Hotel<br>Port Chambly</p>
-      </div>
-
-      <div class="card">
+    <div class="cards-grid">
+      <div class="card fade-in">
+        <div class="card-icon">📅</div>
         <h3>Date</h3>
-        <p>14 Juin 2026</p>
+        <p>Saturday, 16 July 2026</p>
       </div>
 
-      <div class="card">
-        <h3>Heure</h3>
-        <p>17:00</p>
+      <div class="card fade-in">
+        <div class="card-icon">📍</div>
+        <h3>Venue</h3>
+        <p>The Address Boutique Hotel<br>Port Chambly, Mauritius</p>
       </div>
 
-    </div>
-
-    <!-- COUNTDOWN -->
-    <div class="countdown">
-      <h2>Compte à rebours</h2>
-      <div id="timer">
-        <div><span id="days">0</span>J</div>
-        <div><span id="hours">0</span>H</div>
-        <div><span id="minutes">0</span>M</div>
-        <div><span id="seconds">0</span>S</div>
+      <div class="card fade-in">
+        <div class="card-icon">🕰</div>
+        <h3>Ceremony</h3>
+        <p>Doors open at 3:00 PM<br>Ceremony begins at 4:00 PM</p>
       </div>
     </div>
-
-    <!-- GALLERY -->
-    <div class="gallery">
-      <img src="img1.jpg">
-      <img src="img2.jpg">
-      <img src="img3.jpg">
-    </div>
-
   </section>
 
-  <!-- AUDIO -->
-  <audio id="music" src="music.mp3"></audio>
+  <!-- Countdown -->
+  <section class="countdown">
+    <h2 class="section-title light fade-in">Counting Down to Forever</h2>
+    <div id="timer" class="timer-grid">
+      <div class="time-box">
+        <h3 id="cd-days">--</h3>
+        <span>Days</span>
+      </div>
+      <div class="time-box">
+        <h3 id="cd-hours">--</h3>
+        <span>Hours</span>
+      </div>
+      <div class="time-box">
+        <h3 id="cd-minutes">--</h3>
+        <span>Minutes</span>
+      </div>
+      <div class="time-box">
+        <h3 id="cd-seconds">--</h3>
+        <span>Seconds</span>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- Bible verse -->
+  <section class="verse">
+    <h2 class="section-title fade-in">Mark 10:9</h2>
+    <p class="verse-text fade-in">
+      "Therefore what God has joined together,<br>let no one separate."
+    </p>
+  </section>
 
-<script src="script.js"></script>
+  <!-- Music toggle -->
+  <button id="musicBtn" aria-label="Play background music">🎵</button>
+
+  <!-- Particles container -->
+  <div id="particles" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
