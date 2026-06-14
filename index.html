@@ -1,132 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jonathan & Sharone</title>
 
-<meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jonathan & Sharone</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- LOADING SCREEN -->
 <div id="loader">
-
-<h1>Jonathan & Sharone</h1>
-
-<p>16 July 2026</p>
-
+  <div class="loader-content">
+    <div class="ring"></div>
+    <p>Jonathan & Sharone</p>
+  </div>
 </div>
 
-<section class="hero">
+<!-- FLOATING PARTICLES -->
+<div class="particles"></div>
 
-<div class="overlay"></div>
+<!-- MAIN CONTENT -->
+<div id="main">
 
-<div class="hero-content">
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="overlay"></div>
 
-<h2>Jonathan</h2>
+    <div class="hero-content">
+      <h1>Jonathan & Sharone</h1>
+      <p class="date">Nous nous marions</p>
+      <p class="subdate">14 Juin 2026</p>
 
-<span>&</span>
+      <button id="openInvite">Ouvrir l’invitation ✉️</button>
+    </div>
+  </section>
 
-<h2>Sharone</h2>
+  <!-- ENVELOPE SECTION -->
+  <section id="envelopeSection" class="hidden">
+    <div class="envelope-container">
+      <div class="envelope" id="envelope">
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <p class="tap">Cliquez pour ouvrir</p>
+    </div>
+  </section>
 
-<p>16 July 2026</p>
+  <!-- INVITATION CONTENT -->
+  <section id="invitation" class="hidden">
 
-<button id="openInvitation">
+    <!-- PHOTO -->
+    <div class="photo-section">
+      <img src="photo.jpg" alt="Couple Photo">
+    </div>
 
-Open Invitation
+    <!-- VERSE -->
+    <div class="verse">
+      <h2>Marc 10:9</h2>
+      <p>« Que l'homme donc ne sépare pas ce que Dieu a uni. »</p>
+    </div>
 
-</button>
+    <!-- DETAILS -->
+    <div class="details">
+
+      <div class="card">
+        <h3>Cérémonie</h3>
+        <p>The Address Boutique Hotel<br>Port Chambly</p>
+      </div>
+
+      <div class="card">
+        <h3>Date</h3>
+        <p>14 Juin 2026</p>
+      </div>
+
+      <div class="card">
+        <h3>Heure</h3>
+        <p>17:00</p>
+      </div>
+
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+      <h2>Compte à rebours</h2>
+      <div id="timer">
+        <div><span id="days">0</span>J</div>
+        <div><span id="hours">0</span>H</div>
+        <div><span id="minutes">0</span>M</div>
+        <div><span id="seconds">0</span>S</div>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <img src="img1.jpg">
+      <img src="img2.jpg">
+      <img src="img3.jpg">
+    </div>
+
+  </section>
+
+  <!-- AUDIO -->
+  <audio id="music" src="music.mp3"></audio>
 
 </div>
-
-</section>
-
-<audio id="music" loop>
-
-<source src="music/wedding-song.m4a" type="audio/mp4">
-
-</audio>
-
-<section class="invitation">
-
-<img src="./photo.jpg" alt="Wedding photo">
-
-</section>
-
-<section class="details">
-
-<h2>Our Celebration</h2>
-
-<div class="card">
-
-<h3>Date</h3>
-
-<p>16 July 2026</p>
-
-</div>
-
-<div class="card">
-
-<h3>Venue</h3>
-
-<p>
-
-The Address Boutique Hotel<br>
-
-Port Chambly, Mauritius
-
-</p>
-
-</div>
-
-</section>
-
-<section class="countdown">
-
-<h2>Countdown</h2>
-
-<div id="timer">
-
-Loading...
-
-</div>
-
-</section>
-
-<section class="verse">
-
-<h2>Mark 10:9</h2>
-
-<p>
-
-"Therefore what God has joined together,
-
-let no one separate."
-
-</p>
-
-</section>
-
-<button id="musicBtn">
-
-🎵
-
-</button>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
