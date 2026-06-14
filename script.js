@@ -5,7 +5,7 @@
 
 /* ── CONFIG ─────────────────────────────────────────────── */
 // 🗓️  Set your wedding date here (YYYY, Month-1, Day, Hour, Min)
-const WEDDING_DATE = new Date(2026, 06, 16, 15, 0, 0); // Example: 27 Dec 2025, 16:00
+const WEDDING_DATE = new Date(2026, 05, 16, 15, 0, 0); // Example: 27 Dec 2025, 16:00
 
 /* ── INIT ────────────────────────────────────────────────── */
 window.addEventListener('DOMContentLoaded', () => {
