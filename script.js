@@ -1,134 +1,100 @@
-// ===============================
-// 1. ENVELOPE OPENING ANIMATION
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-  const envelope = document.querySelector(".envelope");
-  const openBtn = document.querySelector("#openInvitation");
+/* ================= LOADER ================= */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").style.opacity = "0";
+    document.getElementById("loader").style.transition = "1s ease";
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+    }, 1000);
+  }, 1500);
+});
 
-  if (openBtn && envelope) {
-    openBtn.addEventListener("click", () => {
-      envelope.classList.add("open");
+/* ================= OPEN INVITATION ================= */
+const openBtn = document.getElementById("openInvite");
+const envelopeSection = document.getElementById("envelopeSection");
+const hero = document.querySelector(".hero");
 
-      // smooth scroll after animation
-      setTimeout(() => {
-        document.querySelector("#invitation").scrollIntoView({
-          behavior: "smooth"
-        });
-      }, 1200);
+openBtn.addEventListener("click", () => {
+  hero.style.display = "none";
+  envelopeSection.classList.remove("hidden");
+});
+
+/* ================= ENVELOPE CLICK ================= */
+const envelope = document.getElementById("envelope");
+const invitation = document.getElementById("invitation");
+const music = document.getElementById("music");
+
+envelope.addEventListener("click", () => {
+  envelope.style.transform = "scale(0.8) rotateX(180deg)";
+  envelope.style.transition = "1s ease";
+
+  setTimeout(() => {
+    envelopeSection.style.display = "none";
+    invitation.classList.remove("hidden");
+
+    invitation.classList.add("fade-in");
+
+    // Start music after interaction (browser requirement)
+    music.volume = 0.5;
+    music.play().catch(() => {
+      console.log("Autoplay blocked, user must interact again.");
     });
-  }
-});
 
-
-// ===============================
-// 2. COUNTDOWN TIMER (16 JULY 2026)
-// ===============================
-const countdownEl = document.getElementById("countdown");
-
-if (countdownEl) {
-  const weddingDate = new Date("July 16, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    if (distance < 0) {
-      countdownEl.innerHTML = "Today is the big day 💍";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownEl.innerHTML = `
-      ${days}d ${hours}h ${minutes}m ${seconds}s
-    `;
   }, 1000);
-}
-
-
-// ===============================
-// 3. BACKGROUND MUSIC CONTROL
-// ===============================
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicToggle");
-
-if (music && musicBtn) {
-  let isPlaying = false;
-
-  musicBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      music.pause();
-      musicBtn.innerHTML = "🎵 Play Music";
-    } else {
-      music.play();
-      musicBtn.innerHTML = "⏸ Pause Music";
-    }
-    isPlaying = !isPlaying;
-  });
-}
-
-
-// ===============================
-// 4. SMOOTH SCROLL FOR LINKS
-// ===============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-  });
 });
 
+/* ================= COUNTDOWN ================= */
+const weddingDate = new Date("June 14, 2026 17:00:00").getTime();
 
-// ===============================
-// 5. FADE-IN ON SCROLL (LUXURY FEEL)
-// ===============================
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, {
-  threshold: 0.15
-});
+const countdown = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
 
-document.querySelectorAll(".fade-in").forEach(el => {
-  observer.observe(el);
-});
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
 
-// ===============================
-// 6. FLOATING GOLD PARTICLES
-// ===============================
+  if (distance < 0) {
+    clearInterval(countdown);
+    document.getElementById("timer").innerHTML = "💍 C’est le grand jour !";
+  }
+}, 1000);
+
+/* ================= FLOATING PARTICLES ================= */
+const particlesContainer = document.querySelector(".particles");
+
 function createParticle() {
   const particle = document.createElement("div");
   particle.classList.add("particle");
 
-  particle.style.left = Math.random() * window.innerWidth + "px";
-  particle.style.animationDuration = (3 + Math.random() * 5) + "s";
+  particle.style.left = Math.random() * 100 + "vw";
+  particle.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  particle.style.opacity = Math.random();
 
-  document.body.appendChild(particle);
+  particlesContainer.appendChild(particle);
 
   setTimeout(() => {
     particle.remove();
-  }, 8000);
+  }, 6000);
 }
 
-setInterval(createParticle, 400);
+setInterval(createParticle, 300);
 
+/* ================= FADE IN SCROLL ================= */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in");
+    }
+  });
+});
 
-// ===============================
-// 7. OPTIONAL: PREVENT RIGHT CLICK (ELEGANT PROTECTION)
-// ===============================
-document.addEventListener("contextmenu", (e) => {
-  e.preventDefault();
+document.querySelectorAll(".card, .verse, .gallery img").forEach(el => {
+  observer.observe(el);
 });
