@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan & Sharone — Mariage</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loading-particles" id="loading-particles"></div>
+    <div class="loading-content">
+      <div class="loading-monogram">J <span>&</span> S</div>
+      <div class="loading-divider"></div>
+      <p class="loading-text">Chargement de l'invitation…</p>
+      <div class="loading-bar"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ENVELOPE SECTION -->
+  <div id="envelope-section">
+    <canvas id="particle-canvas"></canvas>
+    <div class="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <!-- Envelope back -->
+        <div class="env-back"></div>
+        <!-- Envelope flap -->
+        <div class="env-flap" id="env-flap"></div>
+        <!-- Letter inside -->
+        <div class="env-letter" id="env-letter">
+          <div class="letter-inner">
+            <div class="letter-monogram">J <span>&</span> S</div>
+            <p class="letter-names">Jonathan & Sharone</p>
+            <p class="letter-date">Vous invitent à célébrer leur union</p>
+          </div>
+        </div>
+        <!-- Envelope front panels -->
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-bottom"></div>
+        <!-- Wax seal -->
+        <div class="wax-seal" id="wax-seal">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#B8973A" opacity="0.15"/>
+            <circle cx="30" cy="30" r="22" fill="#B8973A" opacity="0.25"/>
+            <circle cx="30" cy="30" r="16" fill="#B8973A" opacity="0.9"/>
+            <text x="30" y="35" text-anchor="middle" font-family="Cinzel" font-size="10" fill="#1a2e1a" font-weight="600">J&S</text>
+          </svg>
+        </div>
+      </div>
+      <button class="open-btn" id="open-btn" onclick="openEnvelope()">
+        <span>Ouvrir l'invitation</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L13 7L7 13M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN WEBSITE -->
+  <main id="main-site" class="hidden">
+    <canvas id="main-particles"></canvas>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-image-wrap">
+        <div class="hero-image" id="hero-image">
+          <!-- Placeholder gradient — replace src with real couple photo -->
+          <img
+            src="https://images.unsplash.com/photo-1583939411023-14783179e581?w=1400&q=80"
+            alt="Jonathan & Sharone"
+            class="couple-photo"
+            onerror="this.style.display='none'"
+          />
+          <div class="hero-overlay"></div>
+        </div>
+      </div>
+      <div class="hero-content fade-in">
+        <p class="hero-eyebrow">Le mariage de</p>
+        <h1 class="hero-names">Jonathan<br/><span class="ampersand">&</span><br/>Sharone</h1>
+        <div class="hero-divider">
+          <span class="divider-line"></span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1C9 1 6 5 6 9C6 13 9 17 9 17C9 17 12 13 12 9C12 5 9 1 9 1Z" fill="#B8973A"/><path d="M1 9C1 9 5 6 9 6C13 6 17 9 17 9C17 9 13 12 9 12C5 12 1 9 1 9Z" fill="#B8973A"/></svg>
+          <span class="divider-line"></span>
+        </div>
+        <p class="hero-date">Le <strong>{{ Date }}</strong> · <em>{{ Lieu }}</em></p>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section fade-in">
+      <p class="section-eyebrow">Plus que</p>
+      <div class="countdown" id="countdown">
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">00</span>
+          <span class="cd-label">Jours</span>
+        </div>
+        <div class="cd-sep">·</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hours">00</span>
+          <span class="cd-label">Heures</span>
+        </div>
+        <div class="cd-sep">·</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-mins">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep">·</div>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-secs">00</span>
+          <span class="cd-label">Secondes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS CARDS -->
+    <section class="details-section fade-in">
+      <p class="section-eyebrow">Les détails</p>
+      <h2 class="section-title">Notre jour spécial</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#B8973A" stroke-width="1.2"/><path d="M16 9V16L20 20" stroke="#B8973A" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="card-title">Cérémonie</h3>
+          <p class="card-detail">{{ Heure de la cérémonie }}</p>
+          <p class="card-sub">{{ Date complète }}</p>
+        </div>
+        <div class="card card-accent">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 3L19.5 10.5L28 11.8L22 17.5L23.5 26L16 22L8.5 26L10 17.5L4 11.8L12.5 10.5L16 3Z" stroke="#1a2e1a" stroke-width="1.2" fill="none"/></svg>
+          </div>
+          <h3 class="card-title">Lieu</h3>
+          <p class="card-detail">{{ Nom du lieu }}</p>
+          <p class="card-sub">{{ Adresse }}</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 8 10 8 18C8 22.4 11.6 26 16 26C20.4 26 24 22.4 24 18C24 10 16 3 16 3Z" stroke="#B8973A" stroke-width="1.2" fill="none"/><circle cx="16" cy="18" r="3" fill="#B8973A"/></svg>
+          </div>
+          <h3 class="card-title">Réception</h3>
+          <p class="card-detail">{{ Heure de la réception }}</p>
+          <p class="card-sub">Dîner & célébration</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIBLE VERSE -->
+    <section class="verse-section fade-in">
+      <div class="verse-inner">
+        <div class="verse-ornament top">✦</div>
+        <blockquote class="verse-text">
+          « Que l'homme donc ne sépare pas ce que Dieu a uni. »
+        </blockquote>
+        <cite class="verse-ref">— Marc 10 : 9</cite>
+        <div class="verse-ornament bottom">✦</div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="gallery-section fade-in">
+      <p class="section-eyebrow">Notre histoire</p>
+      <h2 class="section-title">Moments précieux</h2>
+      <div class="gallery-grid" id="gallery">
+        <div class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Photo de couple" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Mariage" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Fleurs" loading="lazy" />
+        </div>
+        <div class="gallery-item wide">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80" alt="Cérémonie" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="Alliance" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer fade-in">
+      <div class="footer-monogram">J <span>&</span> S</div>
+      <p class="footer-names">Jonathan & Sharone</p>
+      <p class="footer-verse">Unis par l'amour, bénis par Dieu</p>
+      <div class="footer-divider"></div>
+      <p class="footer-year">{{ Année }} · Avec amour</p>
+    </footer>
+  </main>
+
+  <!-- MUSIC PLAYER (hidden UI, auto-starts on open) -->
+  <div id="music-player" class="music-player hidden">
+    <button class="music-btn" id="music-btn" onclick="toggleMusic()" title="Musique">
+      <svg id="music-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 18V5L21 3V16M9 18C9 19.66 7.66 21 6 21C4.34 21 3 19.66 3 18C3 16.34 4.34 15 6 15C7.66 15 9 16.34 9 18ZM21 16C21 17.66 19.66 19 18 19C16.34 19 15 17.66 15 16C15 14.34 16.34 13 18 13C19.66 13 21 14.34 21 16Z" stroke="#B8973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg id="music-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M9 18V5L21 3V16M9 18C9 19.66 7.66 21 6 21C4.34 21 3 19.66 3 18C3 16.34 4.34 15 6 15C7.66 15 9 16.34 9 18ZM21 16C21 17.66 19.66 19 18 19C16.34 19 15 17.66 15 16C15 14.34 16.34 13 18 13C19.66 13 21 14.34 21 16ZM3 3L21 21" stroke="#B8973A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Audio element — replace src with your audio file -->
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
