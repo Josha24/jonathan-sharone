@@ -592,11 +592,22 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 /* IMPORTANT: this prevents cropping */
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
+@media (max-width:768px){
+
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .gallery-item{
+        aspect-ratio:2/3;
+    }
+
+    .gallery-item img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+    }
+
 }
 
 .gallery-item:hover img {
